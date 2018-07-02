@@ -1,0 +1,75 @@
+-- This file has been generated from package.yaml by hpack version 0.20.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 42ad9e890669b6c070a305a63db245b9ecdedabaf230b248437b1bedbe150083
+
+name:           chaos-maps
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/chaos-maps#readme>
+homepage:       https://github.com/githubuser/chaos-maps#readme
+bug-reports:    https://github.com/githubuser/chaos-maps/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2018 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/chaos-maps
+
+library
+  hs-source-dirs:
+      src
+  build-depends:
+      Chart >=1.8.3
+    , Chart-cairo >=1.8.3
+    , Chart-diagrams >=1.8.3
+    , base >=4.7 && <5
+  exposed-modules:
+      ChaoticMaps
+      Draw
+      Lib
+      Types
+  other-modules:
+      Paths_chaos_maps
+  default-language: Haskell2010
+
+executable chaos-maps-exe
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Chart >=1.8.3
+    , Chart-cairo >=1.8.3
+    , Chart-diagrams >=1.8.3
+    , base >=4.7 && <5
+    , chaos-maps
+  other-modules:
+      Paths_chaos_maps
+  default-language: Haskell2010
+
+test-suite chaos-maps-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Chart >=1.8.3
+    , Chart-cairo >=1.8.3
+    , Chart-diagrams >=1.8.3
+    , base >=4.7 && <5
+    , chaos-maps
+    , hspec
+  other-modules:
+      ChaoticMapsSpec
+      Paths_chaos_maps
+  default-language: Haskell2010
