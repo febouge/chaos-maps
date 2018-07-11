@@ -14,5 +14,5 @@ plotMap = plot2dWithLines chaoticMapEvaluation "example.png"
 
 plotBifurcationDiagram :: IO ()
 plotBifurcationDiagram = plot2d bifurcationDiagramEvaluation "example.png"
-  where bifurcationDiagramEvaluation = bifurcationDiagram logisticMap mapConfig
+  where bifurcationDiagramEvaluation = bifurcationDiagram cubicMap mapConfig
         mapConfig = BifurcationConditions [0,(0.01)..3.99] 0.5 100 1000
