@@ -1,3 +1,3 @@
-# Changelog for 99bottles
+# Changelog for chaos-maps
 
 ## Unreleased changes
