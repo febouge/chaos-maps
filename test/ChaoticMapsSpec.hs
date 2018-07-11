@@ -24,5 +24,14 @@ spec = do
       last (runLogisticMapTemporal 0.99 100 0.5) `shouldSatisfy` (< Point 100.0 1.0e-25)
       last (runLogisticMapTemporal 0.01 100 0.5) `shouldSatisfy` (< Point 100.0 1.0e-25)
 
+  describe "Bifurcation Diagram" $ do
+    it "Must contain 160 elements" $ do
+      length (bifurcationDiagram logisticMap (BifurcationConditions [1,2] 0.5 20 100)) `shouldBe` 160
+
+    -- it "Must converge to zero when 0 < r< 1" $ do
+    --   last (runLogisticMapTemporal 0.5 100 0.5) `shouldSatisfy` (< Point 100.0 1.0e-25)
+    --   last (runLogisticMapTemporal 0.99 100 0.5) `shouldSatisfy` (< Point 100.0 1.0e-25)
+    --   last (runLogisticMapTemporal 0.01 100 0.5) `shouldSatisfy` (< Point 100.0 1.0e-25)
+
 runLogisticMapTemporal :: InitialCondition -> Int -> RParameter -> Series
 runLogisticMapTemporal ic n r = temporalEvolution logisticMap (TemporalConditions ic n r)
