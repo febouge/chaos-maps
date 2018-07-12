@@ -7,19 +7,20 @@ Chaotic maps are evolution functions that exhibits chaotic behavior. There are m
 
 ## Features
 
-### Supported maps
+### Maps
 - Logistic map
 - Cubic map
 
-### Supported plots
-- Temporal evolution
-- Bifurcation diagram
+### Plots
+- [x] Temporal evolution
+- [x] Bifurcation diagram
+- [ ] Coweb diagrams
+- [x] Lyapunov exponent
 
-### ToDo
-- CLI to allow user parametrization (map selection, conditions, export name, etc.)
-- Coweb diagrams
-- More testing
-- SVG?
+### Extra
+- [ ] CLI to allow user parametrization (map selection, conditions, export name, etc.)
+- [ ] More testing
+- [ ] SVG?
 
 ## Installation
 
