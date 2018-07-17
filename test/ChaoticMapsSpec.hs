@@ -32,5 +32,9 @@ spec = do
     it "Must contain 2 elements" $ do
       length (calculateLyapunov lyapunovLogistic logisticMap (BifurcationConditions [1,2] 0.5 20 100)) `shouldBe` 2
 
+  describe "Coweb diagram" $ do
+    it "Must contain 7 elements" $ do
+      length (cowebSeries logisticMap (TemporalConditions 0.5 3 2)) `shouldBe` 7
+      
 runLogisticMapTemporal :: InitialCondition -> Int -> RParameter -> Series
-runLogisticMapTemporal ic n r = temporalEvolution logisticMap (TemporalConditions ic n r)
+runLogisticMapTemporal ic n rParam = temporalEvolution logisticMap (TemporalConditions ic n rParam)

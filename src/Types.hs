@@ -13,7 +13,9 @@ type MaxPoints = Int
 
 type ChaoticMap = RParameter -> Double -> Double
 
-type LyapunovExponent = RParameter -> [Double] -> Double
+type LyapunovExponent = Double
+
+type LyapunovExpression = RParameter -> Double -> LyapunovExponent
 
 
 data TemporalConditions = TemporalConditions { initialCondition :: InitialCondition
