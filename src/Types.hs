@@ -20,7 +20,7 @@ type LyapunovExpression = RParameter -> Double -> LyapunovExponent
 
 data TemporalConditions = TemporalConditions { initialCondition :: InitialCondition
                                              , numberOfPoints :: Int
-                                             , r :: RParameter
+                                             , parameterValue :: RParameter
                                              }
 
 data BifurcationConditions = BifurcationConditions { rRange :: RRange
@@ -33,3 +33,8 @@ data Point = Point { x :: Double
                    } deriving (Eq, Show, Ord)
 
 type Series = [Point]
+
+data CowebResult = CowebResult { series :: Series
+                               , chaoticMap :: ChaoticMap
+                               , r :: RParameter
+                               }

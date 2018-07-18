@@ -52,14 +52,13 @@ temporalIteration chaoticMap (TemporalConditions initialCondition n r) = current
 convertToPoint :: (Double, Double) -> Point
 convertToPoint (x,y) = Point x y
 
-cowebSeries :: ChaoticMap -> TemporalConditions -> Series
-cowebSeries chaoticMap (TemporalConditions initialCondition 0 r) = []
-cowebSeries chaoticMap (TemporalConditions initialCondition n r) =
-  initialPoint : cowebIteration chaoticMap (TemporalConditions initialCondition n r)
-  where initialPoint = Point initialCondition 0.0
+cowebSeries :: ChaoticMap -> TemporalConditions -> CowebResult
+cowebSeries chaoticMap (TemporalConditions initialCondition n r) = CowebResult resultSerie chaoticMap r
+  where resultSerie = (initialPoint : cowebIteration chaoticMap (TemporalConditions initialCondition n r))
+        initialPoint = Point initialCondition 0.0
 
 cowebIteration :: ChaoticMap -> TemporalConditions -> Series
-cowebIteration chaoticMap (TemporalConditions initialCondition 0 r) = []
+cowebIteration _ (TemporalConditions _ 0 _) = []
 cowebIteration chaoticMap (TemporalConditions initialCondition n r) =
   cowebIterationResult ++ cowebIteration chaoticMap (TemporalConditions (y cowebNextValue) (n-1) r)
   where cowebIterationResult = [cowebHorizontalValue, cowebNextValue]

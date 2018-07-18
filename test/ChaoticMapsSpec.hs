@@ -34,7 +34,9 @@ spec = do
 
   describe "Coweb diagram" $ do
     it "Must contain 7 elements" $ do
-      length (cowebSeries logisticMap (TemporalConditions 0.5 3 2)) `shouldBe` 7
+      let result = cowebSeries logisticMap (TemporalConditions 0.5 3 2)
+      length (series result) `shouldBe` 7
+      r result `shouldBe` 2
       
 runLogisticMapTemporal :: InitialCondition -> Int -> RParameter -> Series
 runLogisticMapTemporal ic n rParam = temporalEvolution logisticMap (TemporalConditions ic n rParam)
