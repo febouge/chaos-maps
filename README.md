@@ -32,6 +32,6 @@ $ stack build && stack exec chaos-maps-exe
 
 ## Examples
 ![Temporal evolution](examples/temporal.png?raw=true "Temporal evolution")
-![Bifurcation diagram](examples/temporal.png?raw=true "Bifurcation diagram")
-![Coweb diagram](examples/temporal.png?raw=true "Coweb diagram")
-![Lyapunov exponent](examples/temporal.png?raw=true "Lyapunov exponent")
+![Bifurcation diagram](examples/bifurcation.png?raw=true "Bifurcation diagram")
+![Coweb diagram](examples/coweb.png?raw=true "Coweb diagram")
+![Lyapunov exponent](examples/lyapunov.png?raw=true "Lyapunov exponent")
