@@ -5,9 +5,9 @@ module Lib
     , plotCowebSeries
     ) where
 
-import ChaoticMaps
-import Draw
-import Types
+import Chaos.Maps
+import Chaos.Draw
+import Chaos.Types
 
 plotChaoticMap :: IO ()
 plotChaoticMap = plot2dWithLines chaoticMapEvaluation "temporal.png"
@@ -16,7 +16,7 @@ plotChaoticMap = plot2dWithLines chaoticMapEvaluation "temporal.png"
 
 plotBifurcationDiagram :: IO ()
 plotBifurcationDiagram = plot2d bifurcationDiagramEvaluation "bifurcation.png"
-  where bifurcationDiagramEvaluation = bifurcationDiagram cubicMap mapConfig
+  where bifurcationDiagramEvaluation = bifurcationDiagram logisticMap mapConfig
         mapConfig = BifurcationConditions [0,(0.01)..3.99] 0.5 100 1000
 
 plotLyapunovExponent :: IO ()
@@ -25,6 +25,6 @@ plotLyapunovExponent = plot2d lyapunovExponentEvaluation "lyapunov.png"
         mapConfig = BifurcationConditions [0,(0.001)..3.99] 0.5 500 10000
 
 plotCowebSeries :: IO ()
-plotCowebSeries = plotCoweb cowebEvaluation "coweb.png"
+plotCowebSeries = plotCoweb cowebEvaluation [0, (0.001)..0.999] "coweb.png"
   where cowebEvaluation = cowebSeries logisticMap mapConfig
-        mapConfig = TemporalConditions 0.2 500 3.57
+        mapConfig = TemporalConditions 0.2 500 3.24

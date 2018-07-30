@@ -1,4 +1,4 @@
-module ChaoticMaps
+module Chaos.Maps
     ( logisticMap
     , cubicMap
     , lyapunovLogistic
@@ -9,7 +9,7 @@ module ChaoticMaps
     , cowebSeries
     ) where
 
-import Types
+import Chaos.Types
 import Data.List (zip)
 
 logisticMap :: ChaoticMap

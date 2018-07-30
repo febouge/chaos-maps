@@ -14,7 +14,7 @@ Chaotic maps are evolution functions that exhibits chaotic behavior. There are m
 ### Plots
 - [x] Temporal evolution
 - [x] Bifurcation diagram
-- [ ] Coweb diagrams
+- [x] Coweb diagrams
 - [x] Lyapunov exponent
 
 ### Extra
@@ -29,3 +29,9 @@ In order to compile the project, you need Stack installed on your system. After 
 ```bash
 $ stack build && stack exec chaos-maps-exe
 ```
+
+## Examples
+![Temporal evolution](examples/temporal.png?raw=true "Temporal evolution")
+![Bifurcation diagram](examples/temporal.png?raw=true "Bifurcation diagram")
+![Coweb diagram](examples/temporal.png?raw=true "Coweb diagram")
+![Lyapunov exponent](examples/temporal.png?raw=true "Lyapunov exponent")

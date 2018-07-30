@@ -1,4 +1,4 @@
-module Types where
+module Chaos.Types where
 
 
 type RParameter = Double
