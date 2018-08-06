@@ -38,7 +38,7 @@ spec = do
       length (series result) `shouldBe` 7
       r result `shouldBe` 2
 
-runLogisticMapTemporal :: InitialCondition -> Int -> RParameter -> Series
+runLogisticMapTemporal :: InitialCondition -> Int -> Parameter -> Series
 runLogisticMapTemporal ic n rParam = temporalEvolution tc
   where
     tc = TemporalConditions LogisticMap ic n rParam
