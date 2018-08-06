@@ -1,6 +1,10 @@
 module Main where
 
-import Lib
+import           Lib
 
 main :: IO ()
-main = plotLyapunovExponent
+main = do
+  plotChaoticMap
+  plotBifurcationDiagram
+  plotCowebSeries
+  plotLyapunovExponent

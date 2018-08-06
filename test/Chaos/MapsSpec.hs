@@ -1,19 +1,19 @@
 module Chaos.MapsSpec (spec) where
 
-import Chaos.Maps
-import Chaos.Types
-import Test.Hspec
+import           Chaos.Maps
+import           Chaos.Types
+import           Test.Hspec
 
 spec :: Spec
 spec = do
 
   describe "Logistic map" $ do
     it "With r = 1 and x = 1, it must be 0" $ do
-      logisticMap 1.0 1.0 `shouldBe` 0.0
+      evaluate LogisticMap 1.0 1.0 `shouldBe` 0.0
 
   describe "Cubic map" $ do
     it "With r = 1 and x = 1 must be 1" $ do
-      cubicMap 1.0 1.0 `shouldBe` 1.0
+      evaluate CubicMap 1.0 1.0 `shouldBe` 1.0
 
   describe "Temporal evolution" $ do
     it "Must contain 100 elements" $ do
@@ -26,17 +26,19 @@ spec = do
 
   describe "Bifurcation Diagram" $ do
     it "Must contain 160 elements" $ do
-      length (bifurcationDiagram logisticMap (BifurcationConditions [1,2] 0.5 20 100)) `shouldBe` 160
+      length (bifurcationDiagram $ DiagramConditions LogisticMap [1,2] 0.5 20 100) `shouldBe` 160
 
   describe "Lyapunov exponent" $ do
     it "Must contain 2 elements" $ do
-      length (calculateLyapunov lyapunovLogistic logisticMap (BifurcationConditions [1,2] 0.5 20 100)) `shouldBe` 2
+      length (calculateLyapunov $ DiagramConditions LogisticMap [1,2] 0.5 20 100) `shouldBe` 2
 
   describe "Coweb diagram" $ do
     it "Must contain 7 elements" $ do
-      let result = cowebSeries logisticMap (TemporalConditions 0.5 3 2)
+      let result = cowebSeries $ TemporalConditions LogisticMap 0.5 3 2
       length (series result) `shouldBe` 7
       r result `shouldBe` 2
 
 runLogisticMapTemporal :: InitialCondition -> Int -> RParameter -> Series
-runLogisticMapTemporal ic n rParam = temporalEvolution logisticMap (TemporalConditions ic n rParam)
+runLogisticMapTemporal ic n rParam = temporalEvolution tc
+  where
+    tc = TemporalConditions LogisticMap ic n rParam

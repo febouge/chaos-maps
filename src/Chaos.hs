@@ -4,6 +4,6 @@ module Chaos
     , module Chaos.Types
     ) where
 
-import Chaos.Maps
-import Chaos.Draw
-import Chaos.Types
+import           Chaos.Draw
+import           Chaos.Maps
+import           Chaos.Types

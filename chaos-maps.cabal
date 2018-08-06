@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 9f456d0cf382085117d2494337e51ac84f5638e5e2d14783de2b19ff05aa0c71
+-- hash: 9851174019bac60c54348a9be10817caa9c27151f8baf1683085fe57b1f99f85
 
 name:           chaos-maps
 version:        0.1.0.0
@@ -33,10 +33,13 @@ library
     , Chart-cairo >=1.8.3
     , Chart-diagrams >=1.8.3
     , base >=4.7 && <5
+    , optparse-applicative >=0.14.2.0
   exposed-modules:
       Chaos
+      Chaos.Cli
       Chaos.Draw
       Chaos.Maps
+      Chaos.Maps.Operations
       Chaos.Types
       Lib
   other-modules:
@@ -54,6 +57,7 @@ executable chaos-maps-exe
     , Chart-diagrams >=1.8.3
     , base >=4.7 && <5
     , chaos-maps
+    , optparse-applicative >=0.14.2.0
   other-modules:
       Paths_chaos_maps
   default-language: Haskell2010
@@ -71,6 +75,7 @@ test-suite chaos-maps-test
     , base >=4.7 && <5
     , chaos-maps
     , hspec
+    , optparse-applicative >=0.14.2.0
   other-modules:
       Chaos.MapsSpec
       Paths_chaos_maps

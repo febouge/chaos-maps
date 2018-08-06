@@ -5,26 +5,30 @@ module Lib
     , plotCowebSeries
     ) where
 
-import Chaos.Maps
-import Chaos.Draw
-import Chaos.Types
+import           Chaos.Draw
+import           Chaos.Maps
+import           Chaos.Types
 
 plotChaoticMap :: IO ()
-plotChaoticMap = plot2dWithLines chaoticMapEvaluation "temporal.png"
-  where chaoticMapEvaluation = temporalEvolution logisticMap mapConfig
-        mapConfig = TemporalConditions 0.5 100 3.2
+plotChaoticMap = plot2dWithLines chaoticMapEvaluation "./examples/temporal.png"
+  where
+    chaoticMapEvaluation = temporalEvolution mapConfig
+    mapConfig = TemporalConditions LogisticMap 0.5 100 3.2
 
 plotBifurcationDiagram :: IO ()
-plotBifurcationDiagram = plot2d bifurcationDiagramEvaluation "bifurcation.png"
-  where bifurcationDiagramEvaluation = bifurcationDiagram logisticMap mapConfig
-        mapConfig = BifurcationConditions [0,(0.01)..3.99] 0.5 100 1000
+plotBifurcationDiagram = plot2d bifurcationDiagramEvaluation "./examples/bifurcation.png"
+  where
+    bifurcationDiagramEvaluation = bifurcationDiagram mapConfig
+    mapConfig = DiagramConditions LogisticMap [0,(0.01)..3.99] 0.5 100 1000
 
 plotLyapunovExponent :: IO ()
-plotLyapunovExponent = plot2d lyapunovExponentEvaluation "lyapunov.png"
-  where lyapunovExponentEvaluation = calculateLyapunov lyapunovLogistic logisticMap mapConfig
-        mapConfig = BifurcationConditions [0,(0.001)..3.99] 0.5 500 10000
+plotLyapunovExponent = plot2d lyapunovExponentEvaluation "./examples/lyapunov.png"
+  where
+    lyapunovExponentEvaluation = calculateLyapunov mapConfig
+    mapConfig = DiagramConditions LogisticMap [0,(0.001)..3.99] 0.5 500 10000
 
 plotCowebSeries :: IO ()
-plotCowebSeries = plotCoweb cowebEvaluation [0, (0.001)..0.999] "coweb.png"
-  where cowebEvaluation = cowebSeries logisticMap mapConfig
-        mapConfig = TemporalConditions 0.2 500 3.24
+plotCowebSeries = plotCoweb cowebEvaluation [0, (0.001)..0.999] "./examples/coweb.png"
+  where
+    cowebEvaluation = cowebSeries mapConfig
+    mapConfig = TemporalConditions LogisticMap 0.2 500 3.24

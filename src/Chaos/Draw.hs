@@ -4,9 +4,9 @@ module Chaos.Draw
     , plotCoweb
     ) where
 
-import Chaos.Types
-import Graphics.Rendering.Chart.Easy
-import Graphics.Rendering.Chart.Backend.Cairo
+import           Chaos.Types
+import           Graphics.Rendering.Chart.Backend.Cairo
+import           Graphics.Rendering.Chart.Easy
 
 plot2dWithLines :: Series -> FilePath -> IO ()
 plot2dWithLines pointSeries exportFile = toFile def exportFile $ do
@@ -30,7 +30,7 @@ plotCoweb cowebResult auxValues exportFile = toFile def exportFile $ do
     let seriesToPlot = series cowebResult
     let pointsToPlot = map (\p -> (x p, y p)) seriesToPlot
     let auxStraightLine = map (\p -> (p, p)) auxValues
-    let chaoticMapPartial = (chaoticMap cowebResult) (r cowebResult)
+    let chaoticMapPartial = evaluate (chaoticMap cowebResult) (r cowebResult)
     let auxChaoticMap = map (\p -> (p, chaoticMapPartial p)) auxValues
     plot (line "Coweb plot" [pointsToPlot])
     plot (line "Chaotic map curve" [auxChaoticMap])
