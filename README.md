@@ -18,7 +18,7 @@ Chaotic maps are evolution functions that exhibits chaotic behavior. There are m
 - [x] Lyapunov exponent
 
 ### Extra
-- [ ] CLI to allow user parametrization (map selection, conditions, export name, etc.)
+- [x] CLI to allow user parametrization (map selection, conditions, export name, etc.)
 - [ ] More testing
 - [ ] SVG?
 
@@ -27,7 +27,12 @@ Chaotic maps are evolution functions that exhibits chaotic behavior. There are m
 In order to compile the project, you need Stack installed on your system. After that, run:
 
 ```bash
-$ stack build && stack exec chaos-maps-exe
+$ stack build
+```
+When the project compiles, type the following command to display the help:
+
+```bash
+$ stack exec chaos-maps-exe --help
 ```
 
 ## Examples

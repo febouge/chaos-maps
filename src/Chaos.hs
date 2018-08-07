@@ -1,9 +1,10 @@
 module Chaos
-    ( module Chaos.Maps
-    , module Chaos.Draw
-    , module Chaos.Types
+    (
+      module Chaos.Map
+    , module Chaos.Type
+    , module Chaos.Cli
     ) where
 
-import           Chaos.Draw
-import           Chaos.Maps
-import           Chaos.Types
+import           Chaos.Cli
+import           Chaos.Map
+import           Chaos.Type

@@ -1,10 +1,7 @@
 module Main where
 
-import           Lib
+import           Chaos
+import           Options.Applicative (customExecParser, prefs, showHelpOnEmpty)
 
 main :: IO ()
-main = do
-  plotChaoticMap
-  plotBifurcationDiagram
-  plotCowebSeries
-  plotLyapunovExponent
+main = run =<< customExecParser (prefs showHelpOnEmpty) cliOpts

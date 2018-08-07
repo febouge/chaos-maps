@@ -1,10 +1,11 @@
 name:                chaos-maps
 version:             0.1.0.0
-github:              "githubuser/chaos-maps"
-license:             BSD3
-author:              "Author name here"
+github:              "febouge/chaos-maps"
+license:             GPL-3
+license-file:        LICENSE
+author:              "Ferran"
 maintainer:          "example@example.com"
-copyright:           "2018 Author name here"
+copyright:           "2018 Ferran"
 
 extra-source-files:
 - README.md
@@ -17,7 +18,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/githubuser/chaos-maps#readme>
+description:         Please see the README on GitHub at <https://github.com/febouge/chaos-maps#readme>
 
 dependencies:
 - base >= 4.7 && < 5
@@ -25,6 +26,7 @@ dependencies:
 - Chart-cairo >= 1.8.3
 - Chart-diagrams >= 1.8.3
 - optparse-applicative >= 0.14.2.0
+- text >= 1.2.3.0
 
 library:
   source-dirs: src

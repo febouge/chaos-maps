@@ -1,10 +1,12 @@
-module Chaos.Draw
-    ( plot2dWithLines
+module Chaos.Map.Plot
+    (
+      plot2dWithLines
     , plot2d
     , plotCoweb
     ) where
 
-import           Chaos.Types
+import           Chaos.Map.Operation
+import           Chaos.Type
 import           Graphics.Rendering.Chart.Backend.Cairo
 import           Graphics.Rendering.Chart.Easy
 

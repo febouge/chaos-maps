@@ -1,6 +1,6 @@
 {-# LANGUAGE DataKinds #-}
 
-module Chaos.Types where
+module Chaos.Type where
 
 type Parameter = Double
 
@@ -10,22 +10,22 @@ type InitialCondition = Double
 
 type TransitorySteps = Int
 
-type MaxPoints = Int
+type CalculusPoints = Int
 
 data TemporalConditions = TemporalConditions
     { mapToEvolve      :: ChaoticMap
     , initialCondition :: InitialCondition
     , numberOfPoints   :: Int
     , parameterValue   :: Parameter
-    }
+    } deriving (Show)
 
 data DiagramConditions = DiagramConditions
-    { mapToAnalize        :: ChaoticMap
-    , rRange              :: ParameterRange
-    , intialCondition     :: InitialCondition
-    , transitorySteps     :: TransitorySteps
-    , maxCalculatedPoints :: MaxPoints
-    }
+    { mapToAnalize    :: ChaoticMap
+    , rRange          :: ParameterRange
+    , intialCondition :: InitialCondition
+    , transitorySteps :: TransitorySteps
+    , calculusPoints  :: CalculusPoints
+    } deriving (Show)
 
 data Point = Point
     { x :: Double
@@ -47,6 +47,7 @@ class OneDimensionalChaoticMap a where
 data ChaoticMap
     = LogisticMap
     | CubicMap
+    deriving (Show)
 
 instance OneDimensionalChaoticMap ChaoticMap where
     evaluate LogisticMap r x = r * x * (1 - x)
