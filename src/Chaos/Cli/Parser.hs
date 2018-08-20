@@ -6,6 +6,7 @@ import           Chaos.Type
 import           Data.Semigroup      ((<>))
 import qualified Data.Text           as T
 import           Options.Applicative
+import           Text.Regex.PCRE
 
 data PlotOptions
     = TemporalIteration TemporalIterationOptions
@@ -110,10 +111,27 @@ parameterParser = option auto ( long "parameter"
                              <> help "The parameter value for the map")
 
 parameterRangeParser :: Parser ParameterRange
-parameterRangeParser = option auto ( long "parameter-range"
-                                  <> short 'r'
-                                  <> metavar "PARAMETERRANGE"
-                                  <> help "The parameter range for the calculus")
+parameterRangeParser = option parseParameterRange ( long "parameter-range"
+                                                  <> short 'r'
+                                                  <> metavar "PARAMETERRANGE"
+                                                  <> help "The parameter range \
+                                                          \for the calculus \
+                                                          \ in the form \
+                                                          \[min,max,step]")
+
+parseParameterRange :: ReadM ParameterRange
+parseParameterRange = eitherReader toParameterRange
+  where
+    toParameterRange :: String -> Either String ParameterRange
+    toParameterRange s
+        = case (captureRangeParts s) of
+            [start,stop,step] -> Right [start,(step)..stop]
+            _                 -> Left "Unable to parse the selected map"
+    captureRangeParts :: String -> [Double]
+    captureRangeParts t
+        = map (\n -> read n :: Double) $ getAllTextMatches ((t =~ parserRegex) :: AllTextMatches [] String)
+    parserRegex :: String
+    parserRegex = "(\\d+\\.\\d+)"
 
 transitoryStepsParser :: Parser Int
 transitoryStepsParser = option auto ( long "transitory-steps"
