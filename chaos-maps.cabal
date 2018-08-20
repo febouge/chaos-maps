@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 73d47cb72b63afd08d731752c73a46639912d7e22b3776798c5b6c25855d1bd3
+-- hash: 692864192bdc10ea2230256330987cdebbbc64063304e135438d527eb08bd20f
 
 name:           chaos-maps
 version:        0.1.0.0
@@ -34,6 +34,7 @@ library
     , Chart-diagrams >=1.8.3
     , base >=4.7 && <5
     , optparse-applicative >=0.14.2.0
+    , regex-pcre >=0.94.4
     , text >=1.2.3.0
   exposed-modules:
       Chaos
@@ -60,6 +61,7 @@ executable chaos-maps-exe
     , base >=4.7 && <5
     , chaos-maps
     , optparse-applicative >=0.14.2.0
+    , regex-pcre >=0.94.4
     , text >=1.2.3.0
   other-modules:
       Paths_chaos_maps
@@ -79,6 +81,7 @@ test-suite chaos-maps-test
     , chaos-maps
     , hspec
     , optparse-applicative >=0.14.2.0
+    , regex-pcre >=0.94.4
     , text >=1.2.3.0
   other-modules:
       Chaos.Map.OperationSpec
