@@ -56,4 +56,4 @@ instance OneDimensionalChaoticMap ChaoticMap where
     lyapunov LogisticMap r xs
         = foldl (\acc x -> acc + log(abs(r-2 * r * x))) 0.0 xs / (fromIntegral $ length xs)
     lyapunov CubicMap r xs
-        = foldl (\acc x -> acc + log(abs(r-2 * r * x))) 0.0 xs / (fromIntegral $ length xs)
+        = foldl (\acc x -> acc + log(abs(3 * r * x ** 2 + (1 - r)))) 0.0 xs / (fromIntegral $ length xs)

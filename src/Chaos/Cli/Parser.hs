@@ -126,7 +126,7 @@ parseParameterRange = eitherReader toParameterRange
     toParameterRange s
         = case (captureRangeParts s) of
             [start,stop,step] -> Right [start,(step)..stop]
-            _                 -> Left "Unable to parse the selected map"
+            _                 -> Left "Unable to parse the range"
     captureRangeParts :: String -> [Double]
     captureRangeParts t
         = map (\n -> read n :: Double) $ getAllTextMatches ((t =~ parserRegex) :: AllTextMatches [] String)
